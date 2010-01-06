@@ -1,5 +1,7 @@
 
 def csv_rows_to_arrs(csvFile, vars={}):
+    """Convert a coma delimitted file to nexted arrays with each row of the file
+    converting to one array."""
     arrRows = list(str.splitlines(csvFile))
     for i in range(len(arrRows)):
         arrRows[i] = str.split(arrRows[i], ',')
@@ -9,6 +11,7 @@ def get_list_first_row(arr, vars={}):
     return arr.pop(0)
 
 def get_col(csvFile, intColIndex=0, remove=False): 
+    """return an array containing the data from the csv file in the specified column number"""
     col = []
     for rowIndex in range(len(csvFile)):
         if remove is False:
@@ -20,6 +23,7 @@ def get_col(csvFile, intColIndex=0, remove=False):
     #make the contents of all lists numeric
 
 def fail(file):
+    """This function is supposed to fail."""
     eval('wrong syntax')
 
 
@@ -32,7 +36,8 @@ def splitCol (csvFile, colIndex=0):
 
 #input: list or array
 #output: numeric list or array 
-def makeNumeric(someArray): 
+def makeNumeric(someArray=[['asdf', 'yasdf', 'fd'], ['1', '1', '1'], ['-1', '1', '-1'], ['-1', '-1', '-1'], ['1', '-1', '1']] ): 
+    """Convert values of an array to float if possible"""
     for i in range(len(someArray)):
         if isinstance(someArray, list):
             someArray[i] = makeNumeric(someArray[i])
@@ -51,6 +56,7 @@ def makeNumeric(someArray):
 #an attempt at creating an auto associative network. THe NN did not learn.
 def makeTrainingData(csvFile):
     trainingData = []
+    csvFile.pop(0)
     for y in range(len(csvFile)):
         inData = csvFile[y][:]
         for x in range(len(csvFile[y])):
@@ -76,4 +82,4 @@ def matchVariables(vars, map = []):
 
 
 if __name__ == '__main__':
-    fail()
+    print makeNumeric()

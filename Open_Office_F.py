@@ -34,29 +34,23 @@ class ReadOO:
     def getData(self, collapse=1):
         return " ".join(rx_stripxml.sub(" ", self.data).split())
     
-#make a string a file object
 def _string_to_file_obj(data):
+    """accept a string and return a file object witen with StringIO()"""
     S = StringIO.StringIO()
     S.write(data)
     return S
 
 
-#Callable Functions
 def get_xml_from_00(data):
+    """return the data from an OpenOffice file in xml format"""
     file = _string_to_file_obj(data)
     oo = ReadOO(file)
     return oo.getXML(), None
 
 
 def get_text_from_OO(data):
+    """return the data from an OpenOffice file as text"""
     file = _string_to_file_obj(data)
     oo = ReadOO(file)
     return oo.getData(), None
-
-    
-if __name__ == "__main__":
-    filepath = '/var/www/daduce/sample_data/Rent_Calculations.ods'
-    fileObj = open(filepath, 'r')
-    data = fileObj.read()
-    print get_text_from_OO(data)
 

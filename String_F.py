@@ -10,14 +10,15 @@ from statlib import stats
 if __name__ == '__main__':
     pass
 
-def count_characters(str):
-    if len(str) > 5000:     str = str[:5000]
+def count_characters(string):
+    string = str(string)
+    if len(string) > 5000:     string = string[:5000]
     
-    chars = len(str)
+    chars = len(string)
     charlist = map(chr, range(32, 126))
     # count the characters in the string and create a dictionary of char:count pairs
     charCount = {}
-    for char in str.lower():
+    for char in string.lower():
         if char in charlist:
             charCount[char] = charCount.get(char, 0) + 1
     
